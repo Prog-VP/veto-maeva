@@ -2,3 +2,7 @@ node_modules
 dist
 .vite
 .env
+
+# Bexio API documentation (static HTML assets, not part of source)
+bexio API documentation_files/
+bexio*.html
