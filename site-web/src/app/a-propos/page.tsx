@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
+import { Reveal } from "@/components/ui/reveal";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { CLINIC } from "@/lib/clinic";
 
@@ -28,11 +29,16 @@ export default function AProposPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid gap-16 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-5 lg:sticky lg:top-28">
-              <PhotoPlaceholder aspectRatio="3/4" tone="light" className="-rotate-[1.5deg]" />
-            </div>
+            <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
+              <PhotoPlaceholder
+                aspectRatio="3/4"
+                tone="light"
+                kind="portrait"
+                className="-rotate-[1.5deg]"
+              />
+            </Reveal>
 
-            <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty">
+            <Reveal className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty" delay={100}>
               <p>
                 Originaire du Vully, j'ai très tôt développé une véritable passion pour les animaux,
                 ce qui m'a naturellement conduite vers la médecine vétérinaire.
@@ -54,7 +60,7 @@ export default function AProposPage() {
                 de l'animal, en privilégiant des soins réalisés avec douceur et attention à son
                 bien-être.
               </p>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>

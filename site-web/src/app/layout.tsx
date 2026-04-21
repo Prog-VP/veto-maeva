@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PageMain } from "@/components/layout/page-main";
 import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
 import { CLINIC } from "@/lib/clinic";
 import "./globals.css";
@@ -75,9 +76,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export const viewport: Viewport = {
@@ -95,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col bg-cream text-bark">
         <LocalBusinessJsonLd />
         <Header />
-        <main className="flex-1">{children}</main>
+        <PageMain>{children}</PageMain>
         <Footer />
       </body>
     </html>

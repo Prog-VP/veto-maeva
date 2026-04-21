@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
+import { Reveal } from "@/components/ui/reveal";
 import { CLINIC, NAV } from "@/lib/clinic";
 
 export default function HomePage() {
@@ -40,7 +41,7 @@ function Hero() {
             <div className="mt-10 flex flex-wrap gap-3">
               <a
                 href={CLINIC.phone.href}
-                className="group inline-flex items-center gap-2.5 rounded-full gradient-brand px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-coffee/25 transition-transform hover:scale-[1.03]"
+                className="pulse shine group inline-flex items-center gap-2.5 rounded-full gradient-brand px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-coffee/25 transition-transform hover:scale-[1.03]"
               >
                 <Phone className="h-4 w-4" strokeWidth={2.5} />
                 {CLINIC.phone.display}
@@ -50,9 +51,19 @@ function Hero() {
 
           <div className="lg:col-span-5">
             <div className="relative">
-              <PhotoPlaceholder aspectRatio="4/5" tone="warm" className="rotate-[2deg]" />
+              <PhotoPlaceholder
+                aspectRatio="4/5"
+                tone="warm"
+                kind="horse"
+                className="rotate-[2deg]"
+              />
               <div className="absolute -bottom-8 -left-8 hidden md:block">
-                <PhotoPlaceholder aspectRatio="1/1" tone="dark" className="w-40 -rotate-[4deg]" />
+                <PhotoPlaceholder
+                  aspectRatio="1/1"
+                  tone="dark"
+                  kind="paw"
+                  className="w-40 -rotate-[4deg]"
+                />
               </div>
             </div>
           </div>
@@ -68,18 +79,18 @@ function Sections() {
     <section className="py-16 md:py-24">
       <Container>
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <li key={item.href}>
+          {items.map((item, i) => (
+            <Reveal as="li" key={item.href} delay={i * 80}>
               <Link
                 href={item.href}
-                className="group flex items-start justify-between gap-4 rounded-3xl border border-[color:var(--color-border)] bg-cream p-8 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-coffee/5"
+                className="group flex h-full items-start justify-between gap-4 rounded-3xl border border-[color:var(--color-border)] bg-cream p-8 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-coffee/5"
               >
                 <span className="font-display text-3xl font-extrabold tracking-tight text-coffee leading-[1.05]">
                   {item.label}
                 </span>
                 <ArrowUpRight className="h-6 w-6 shrink-0 text-terracotta transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>

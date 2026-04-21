@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
+import { Reveal } from "@/components/ui/reveal";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 export const metadata: Metadata = {
@@ -28,12 +29,12 @@ export default function PresentationPage() {
       <section className="pb-24 md:pb-32">
         <Container>
           <div className="grid gap-16 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-5 space-y-6">
-              <PhotoPlaceholder aspectRatio="4/5" tone="warm" />
-              <PhotoPlaceholder aspectRatio="4/3" tone="light" className="lg:ml-12" />
-            </div>
+            <Reveal className="lg:col-span-5 space-y-6">
+              <PhotoPlaceholder aspectRatio="4/5" tone="warm" kind="cabinet" />
+              <PhotoPlaceholder aspectRatio="4/3" tone="light" kind="paw" className="lg:ml-12" />
+            </Reveal>
 
-            <div className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty">
+            <Reveal className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty" delay={100}>
               <p>
                 L'idée de ce cabinet vétérinaire a germé, après de longues réflexions, avec la volonté
                 d'offrir une médecine vétérinaire de proximité aux habitants du Vully et des environs.
@@ -55,7 +56,7 @@ export default function PresentationPage() {
                 Je dispose d'un petit cabinet à domicile pour toutes les consultations des petits
                 animaux, ainsi qu'un véhicule équipé pour soigner vos équidés à domicile.
               </p>
-            </div>
+            </Reveal>
           </div>
         </Container>
       </section>

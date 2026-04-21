@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
+import { Reveal } from "@/components/ui/reveal";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { SERVICES_HORSES, SERVICES_PETS } from "@/lib/clinic";
 
@@ -39,9 +40,11 @@ export default function PrestationsPage() {
 
             <ul className="mt-10 grid gap-3 md:grid-cols-2">
               {SERVICES_HORSES.map((service, i) => (
-                <li
+                <Reveal
+                  as="li"
                   key={service.title}
-                  className="relative overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-cream p-6"
+                  delay={i * 50}
+                  className="relative overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-cream p-6 transition-transform hover:-translate-y-0.5"
                 >
                   <span className="absolute top-4 right-5 font-display text-4xl font-extrabold text-caramel/20 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
@@ -52,7 +55,7 @@ export default function PrestationsPage() {
                   {service.description && (
                     <p className="mt-2 text-bark/75 leading-relaxed">{service.description}</p>
                   )}
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
@@ -75,9 +78,11 @@ export default function PrestationsPage() {
 
               <ul className="mt-10 grid gap-3 md:grid-cols-2">
                 {SERVICES_PETS.map((service, i) => (
-                  <li
+                  <Reveal
+                    as="li"
                     key={service.title}
-                    className="relative overflow-hidden rounded-2xl bg-cream/10 border border-cream/15 backdrop-blur p-6"
+                    delay={i * 50}
+                    className="relative overflow-hidden rounded-2xl bg-cream/10 border border-cream/15 backdrop-blur p-6 transition-transform hover:-translate-y-0.5"
                   >
                     <span className="absolute top-4 right-5 font-display text-4xl font-extrabold text-cream/25 tabular-nums">
                       {String(i + 1).padStart(2, "0")}
@@ -88,7 +93,7 @@ export default function PrestationsPage() {
                     {service.description && (
                       <p className="mt-2 text-cream/85 leading-relaxed">{service.description}</p>
                     )}
-                  </li>
+                  </Reveal>
                 ))}
               </ul>
             </div>

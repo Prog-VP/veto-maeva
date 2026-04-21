@@ -50,7 +50,7 @@ export default function UrgencePage() {
             <div className="mt-12 max-w-2xl">
               <a
                 href={CLINIC.phone.href}
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-cream px-8 py-6 text-xl md:text-2xl font-display font-extrabold text-coffee shadow-2xl shadow-coffee/30 transition-transform hover:scale-[1.02]"
+                className="pulse shine group inline-flex w-full items-center justify-center gap-3 rounded-full bg-cream px-8 py-6 text-xl md:text-2xl font-display font-extrabold text-coffee shadow-2xl shadow-coffee/30 transition-transform hover:scale-[1.02]"
               >
                 <Phone className="h-6 w-6" strokeWidth={2.5} />
                 {CLINIC.phone.display}

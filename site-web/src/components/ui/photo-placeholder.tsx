@@ -1,17 +1,40 @@
-import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/cn";
+import {
+  CabinetSilhouette,
+  HorseHead,
+  Horseshoe,
+  PawSimple,
+  Portrait,
+} from "@/components/ui/silhouettes";
+
+type Kind = "paw" | "horseshoe" | "horse" | "portrait" | "cabinet";
 
 export function PhotoPlaceholder({
-  label,
   className,
   aspectRatio = "4/5",
   tone = "warm",
+  kind = "paw",
 }: {
-  label?: string;
   className?: string;
   aspectRatio?: string;
   tone?: "warm" | "dark" | "light";
+  kind?: Kind;
 }) {
+  const Icon = {
+    paw: PawSimple,
+    horseshoe: Horseshoe,
+    horse: HorseHead,
+    portrait: Portrait,
+    cabinet: CabinetSilhouette,
+  }[kind];
+
+  const iconColor =
+    tone === "dark"
+      ? "text-cream/20"
+      : tone === "light"
+        ? "text-coffee/20"
+        : "text-cream/35";
+
   return (
     <div
       className={cn(
@@ -24,28 +47,31 @@ export function PhotoPlaceholder({
       style={{ aspectRatio }}
     >
       <div className="grain absolute inset-0" aria-hidden />
+
       <div className="relative flex h-full w-full items-center justify-center p-8">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <div
-            className={cn(
-              "flex h-16 w-16 items-center justify-center rounded-full backdrop-blur-sm",
-              tone === "dark" ? "bg-cream/10 text-cream" : "bg-bark/10 text-bark",
-            )}
-          >
-            <ImageIcon className="h-7 w-7" strokeWidth={1.5} />
-          </div>
-          {label && (
-            <p
-              className={cn(
-                "font-serif italic text-sm",
-                tone === "dark" ? "text-cream/70" : "text-bark/60",
-              )}
-            >
-              {label}
-            </p>
+        <Icon
+          className={cn(
+            "w-[55%] h-auto transition-transform duration-700 ease-out group-hover:scale-105 group-hover:rotate-[-2deg]",
+            iconColor,
           )}
-        </div>
+          aria-hidden
+        />
       </div>
+
+      <div
+        aria-hidden
+        className={cn(
+          "absolute top-5 right-5 h-2 w-2 rounded-full",
+          tone === "dark" ? "bg-cream/30" : "bg-bark/20",
+        )}
+      />
+      <div
+        aria-hidden
+        className={cn(
+          "absolute bottom-6 left-6 h-1.5 w-1.5 rounded-full",
+          tone === "dark" ? "bg-cream/20" : "bg-bark/15",
+        )}
+      />
     </div>
   );
 }
