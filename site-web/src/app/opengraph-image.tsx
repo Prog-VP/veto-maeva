@@ -17,8 +17,8 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          backgroundImage: "linear-gradient(120deg, #3e2c1c 0%, #7a4e2d 45%, #c96f4a 100%)",
-          color: "#f5efe6",
+          backgroundImage: "linear-gradient(120deg, #0b2545 0%, #164a82 55%, #1d8bc7 100%)",
+          color: "#f3faff",
           fontFamily: "system-ui, sans-serif",
         }}
       >
@@ -28,7 +28,7 @@ export default async function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 999,
-              background: "rgba(245,239,230,0.15)",
+              background: "rgba(243,250,255,0.15)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -60,7 +60,7 @@ export default async function OpengraphImage() {
               marginTop: 32,
               fontSize: 28,
               fontStyle: "italic",
-              color: "rgba(245,239,230,0.85)",
+              color: "rgba(243,250,255,0.85)",
               maxWidth: 900,
               lineHeight: 1.3,
             }}
@@ -74,7 +74,7 @@ export default async function OpengraphImage() {
             display: "flex",
             justifyContent: "space-between",
             fontSize: 20,
-            color: "rgba(245,239,230,0.7)",
+            color: "rgba(243,250,255,0.7)",
           }}
         >
           <div>{CLINIC.address.city} · {CLINIC.address.countryName}</div>

@@ -31,7 +31,7 @@ export function HorseHead(props: SVGProps<SVGSVGElement>) {
         d="M35 18 C30 14 32 8 38 10 L48 14 C58 10 68 16 70 28 C72 38 74 44 72 52 L68 64 C67 70 62 74 58 74 L56 80 C54 86 50 90 46 88 C42 86 40 80 42 74 L40 68 C34 64 30 56 30 46 C30 36 32 26 35 18 Z"
         fill="currentColor"
       />
-      <circle cx="55" cy="38" r="2.2" fill="#f5efe6" opacity="0.9" />
+      <circle cx="55" cy="38" r="2.2" fill="#f3faff" opacity="0.9" />
     </svg>
   );
 }
