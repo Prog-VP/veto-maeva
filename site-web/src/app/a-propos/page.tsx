@@ -1,29 +1,23 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { Reveal } from "@/components/ui/reveal";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/metadata";
 import { CLINIC } from "@/lib/clinic";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "À propos de moi",
   description: `${CLINIC.vet.fullName}, ${CLINIC.vet.title}. Diplômée en médecine vétérinaire en 2016 à Berne, 10 ans d'expérience principalement en médecine équine.`,
-  alternates: { canonical: "/a-propos" },
-  openGraph: {
-    title: "À propos de moi",
-    url: "/a-propos",
-  },
-};
+  path: "/a-propos",
+});
 
 export default function AProposPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "À propos de moi", url: "/a-propos" }]} />
-
       <PageHeader
         title="À propos de moi"
         breadcrumbs={[{ label: "À propos de moi", href: "/a-propos" }]}
+        jsonLdName="À propos de moi"
       />
 
       <section className="pb-24 md:pb-32">
@@ -38,7 +32,10 @@ export default function AProposPage() {
               />
             </Reveal>
 
-            <Reveal className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty" delay={100}>
+            <Reveal
+              className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty"
+              delay={100}
+            >
               <p>
                 Originaire du Vully, j'ai très tôt développé une véritable passion pour les animaux,
                 ce qui m'a naturellement conduite vers la médecine vétérinaire.

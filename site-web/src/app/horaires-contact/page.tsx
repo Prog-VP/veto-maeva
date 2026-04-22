@@ -1,20 +1,19 @@
-import type { Metadata } from "next";
-import { Phone, MessageCircle, MapPin } from "lucide-react";
+import { MessageCircle, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { Card } from "@/components/ui/card";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { PhoneCTA } from "@/components/ui/phone-cta";
+import { ButtonOutline } from "@/components/ui/button-outline";
+import { pageMetadata } from "@/lib/metadata";
 import { CLINIC } from "@/lib/clinic";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Horaires, contact et infos pratiques",
   description:
     "Prendre rendez-vous au cabinet Vully Vétérinaire à Montmagny (VD) : téléphone, WhatsApp, horaires d'appel et infos pratiques.",
-  alternates: { canonical: "/horaires-contact" },
-  openGraph: {
-    title: "Horaires, contact et infos pratiques",
-    url: "/horaires-contact",
-  },
-};
+  path: "/horaires-contact",
+});
 
 export default function HorairesContactPage() {
   const mapQuery = encodeURIComponent(
@@ -23,10 +22,6 @@ export default function HorairesContactPage() {
 
   return (
     <>
-      <BreadcrumbJsonLd
-        items={[{ name: "Horaires, contact et infos pratiques", url: "/horaires-contact" }]}
-      />
-
       <PageHeader
         title={
           <>
@@ -35,31 +30,21 @@ export default function HorairesContactPage() {
           </>
         }
         breadcrumbs={[{ label: "Horaires & contact", href: "/horaires-contact" }]}
+        jsonLdName="Horaires, contact et infos pratiques"
       />
 
       <section className="pb-20">
         <Container>
-          <div className="rounded-3xl border border-[color:var(--color-border)] bg-cream p-8 md:p-10">
-            <p className="text-xs uppercase tracking-[0.22em] text-terracotta font-bold">
-              Numéro de téléphone
-            </p>
+          <Card>
+            <Eyebrow>Numéro de téléphone</Eyebrow>
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href={CLINIC.phone.href}
-                className="inline-flex w-full min-w-0 items-center justify-center gap-3 rounded-full gradient-brand px-5 py-4 font-display text-xl font-extrabold text-cream sm:w-auto sm:px-7 sm:text-2xl md:text-3xl"
-              >
-                <Phone className="h-6 w-6 shrink-0" strokeWidth={2.5} />
-                <span className="whitespace-nowrap">{CLINIC.phone.display}</span>
-              </a>
-              <a
-                href={CLINIC.phone.whatsapp}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-coffee/15 px-6 py-4 text-sm font-semibold text-coffee transition-colors hover:bg-coffee hover:text-cream sm:w-auto"
-              >
+              <PhoneCTA size="lg" className="w-full min-w-0 sm:w-auto" pulse={false} />
+              <ButtonOutline href={CLINIC.phone.whatsapp} external className="w-full sm:w-auto py-4">
                 <MessageCircle className="h-4 w-4 shrink-0" />
                 WhatsApp
-              </a>
+              </ButtonOutline>
             </div>
-          </div>
+          </Card>
         </Container>
       </section>
 
@@ -82,7 +67,10 @@ export default function HorairesContactPage() {
               answer={
                 <p>
                   Pas de message WhatsApp pour une urgence, téléphonez au{" "}
-                  <a href={CLINIC.phone.href} className="font-semibold text-coffee underline decoration-terracotta/50 underline-offset-4">
+                  <a
+                    href={CLINIC.phone.href}
+                    className="font-semibold text-coffee underline decoration-terracotta/50 underline-offset-4"
+                  >
                     {CLINIC.phone.display}
                   </a>
                   . J'essayerais autant que possible de répondre à vos appels 7j/7, 24h/24. Si
@@ -135,25 +123,22 @@ export default function HorairesContactPage() {
             </h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-2 items-start">
-            <div className="rounded-3xl border border-[color:var(--color-border)] bg-cream p-8 md:p-10">
-              <p className="text-xs uppercase tracking-[0.22em] text-terracotta font-bold">
-                Cabinet petits animaux
-              </p>
+            <Card>
+              <Eyebrow>Cabinet petits animaux</Eyebrow>
               <address className="mt-5 not-italic font-display text-3xl md:text-4xl font-extrabold tracking-tight text-coffee leading-[1.05]">
                 {CLINIC.name}<br />
                 {CLINIC.address.street}<br />
                 {CLINIC.address.postalCode} {CLINIC.address.city}
               </address>
-              <a
+              <ButtonOutline
                 href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-coffee/15 px-6 py-3.5 text-sm font-semibold text-coffee hover:bg-coffee hover:text-cream transition-colors"
+                external
+                className="mt-8"
               >
                 <MapPin className="h-4 w-4" />
                 Ouvrir dans Google Maps
-              </a>
-            </div>
+              </ButtonOutline>
+            </Card>
             <div className="overflow-hidden rounded-3xl border border-[color:var(--color-border)]">
               <div className="aspect-[4/3] w-full bg-cream-dark">
                 <iframe
@@ -182,12 +167,12 @@ function Qa({
   answer: React.ReactNode;
 }) {
   return (
-    <article className="rounded-3xl border border-[color:var(--color-border)] bg-cream p-8 md:p-10">
+    <Card as="article">
       <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-coffee leading-[1.1]">
         {question}
       </h2>
       {hint && <p className="mt-2 text-sm text-bark/60 italic">({hint})</p>}
       <div className="mt-5 text-lg text-bark/85 leading-relaxed">{answer}</div>
-    </article>
+    </Card>
   );
 }

@@ -1,29 +1,23 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageHeader } from "@/components/ui/page-header";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { Reveal } from "@/components/ui/reveal";
-import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Présentation",
   description:
     "Cabinet vétérinaire de proximité pour les habitants du Vully et des environs. Un petit cabinet familial à taille humaine, à Montmagny (VD).",
-  alternates: { canonical: "/presentation" },
-  openGraph: {
-    title: "Présentation",
-    url: "/presentation",
-  },
-};
+  path: "/presentation",
+});
 
 export default function PresentationPage() {
   return (
     <>
-      <BreadcrumbJsonLd items={[{ name: "Présentation", url: "/presentation" }]} />
-
       <PageHeader
         title="Présentation"
         breadcrumbs={[{ label: "Présentation", href: "/presentation" }]}
+        jsonLdName="Présentation"
       />
 
       <section className="pb-24 md:pb-32">
@@ -34,7 +28,10 @@ export default function PresentationPage() {
               <PhotoPlaceholder aspectRatio="4/3" tone="light" kind="paw" className="lg:ml-12" />
             </Reveal>
 
-            <Reveal className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty" delay={100}>
+            <Reveal
+              className="lg:col-span-7 space-y-6 text-lg leading-relaxed text-bark/85 text-pretty"
+              delay={100}
+            >
               <p>
                 L'idée de ce cabinet vétérinaire a germé, après de longues réflexions, avec la volonté
                 d'offrir une médecine vétérinaire de proximité aux habitants du Vully et des environs.

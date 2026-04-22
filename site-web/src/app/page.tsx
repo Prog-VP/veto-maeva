@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowUpRight, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { PhotoPlaceholder } from "@/components/ui/photo-placeholder";
 import { Reveal } from "@/components/ui/reveal";
+import { PhoneCTA } from "@/components/ui/phone-cta";
 import { CLINIC, NAV } from "@/lib/clinic";
 
 export default function HomePage() {
@@ -39,13 +40,7 @@ function Hero() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              <a
-                href={CLINIC.phone.href}
-                className="pulse shine group inline-flex items-center gap-2.5 rounded-full gradient-brand px-7 py-4 text-base font-semibold text-cream shadow-xl shadow-coffee/25 transition-transform hover:scale-[1.03]"
-              >
-                <Phone className="h-4 w-4" strokeWidth={2.5} />
-                {CLINIC.phone.display}
-              </a>
+              <PhoneCTA />
             </div>
           </div>
 
