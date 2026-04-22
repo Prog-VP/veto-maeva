@@ -4,7 +4,7 @@ export const CLINIC = {
   tagline: "Un cabinet pour vos amis à 4 pattes mais aussi à 4 sabots",
   description:
     "Cabinet vétérinaire Vully Vétérinaire à Montmagny (VD). Soins pour équidés et petits animaux par Maëva Verdon, Dr. med. vet.",
-  url: "https://vully-veterinaire.ch",
+  url: "https://vully-vétérinaire.ch",
 
   address: {
     street: "Rue de la Laiterie 4",
